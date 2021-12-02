@@ -4,6 +4,8 @@ import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
 import java.security.SecureRandom;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Simulation {
 
@@ -46,12 +48,37 @@ public class Simulation {
         }
     }
 
-    public void loopUntilPlayerSucceed() {
+    public void loopUntilPlayerSucceed(long iteration) {
         //TODO implement me
 
-        while (!nextRound()){
+        long i = 0;
+        boolean verification = false;
 
+        long timestampDeb = System.currentTimeMillis();
+
+        while (i <= iteration){
+
+            verification = nextRound();
+
+            if(verification){
+                i = iteration;
+            }
+            i++;
         }
+
+        logger.log("end \n");
+
+        if(verification){
+            logger.log("bravo t'a trouvée, c'est gagnée! :D \n Le nombre était " + numberToGuess);
+        }
+        else{
+            logger.log("c'est pas ça c'est perdu. :( \n Le nombre était " + numberToGuess);
+        }
+
+        long timestampFin = System.currentTimeMillis();
+        long timestampMS = timestampFin - timestampDeb;
+        String now = new SimpleDateFormat("mm:ss.SS").format(new Date(timestampMS));
+        logger.log(" sa a duree :" + now);
 
     }
 }

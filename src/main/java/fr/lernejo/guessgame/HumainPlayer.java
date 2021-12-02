@@ -14,7 +14,7 @@ public class HumainPlayer implements Player{
     @Override
     public long askNextGuess() {
 
-        System.out.print("Ecrire un nombre: ");
+        log.log("Ecrire un nombre: ");
 
         //Lit l'entier écrit par l'utilisateur et l'affecte
         // à  la variable nombre du programme
@@ -27,10 +27,10 @@ public class HumainPlayer implements Player{
     public void respond(boolean lowerOrGreater) {
 
             if(lowerOrGreater){
-                System.out.print("c est plus! \n");
+                log.log("c est plus grand ! \n");
             }
             else{
-                System.out.print("c est moin! \n");
+                log.log("c est plus petit ! \n");
             }
     }
 }
