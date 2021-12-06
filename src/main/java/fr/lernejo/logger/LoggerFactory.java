@@ -6,9 +6,9 @@ public class LoggerFactory {
 
         Logger console = new ConsoleLogger();
         Logger logfile = new FileLogger("./fileLogger.log");
-
-        Logger log = new ContextualLogger(
-            new CompositeLogger(console,logfile), name
+        Logger logFiltered = new FilteredLogger(logfile,message -> message.contains("simulation"));
+        Logger log = new ContextualLogger(name,
+            new CompositeLogger(console,logFiltered)
         );
 
         return log;

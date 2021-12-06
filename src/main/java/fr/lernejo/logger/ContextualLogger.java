@@ -10,7 +10,7 @@ public class ContextualLogger implements Logger{
     private String callerClass;
     private DateTimeFormatter formatter;
 
-    public ContextualLogger(Logger delegate, String name) {
+    public ContextualLogger(String name, Logger delegate) {
 
         this.delegateLoggger = delegate;
         this.callerClass = name;
